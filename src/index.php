@@ -166,8 +166,29 @@ try {
     die('Erreur: ' . $error->getMessage());
 } */
 
+/* try {
+    $search = $db->prepare("SELECT count(*) FROM orders WHERE shippedDate BETWEEN '2004/06/01' AND '2004/10/01'");
+    $search->execute();
+} catch (Exception $error) {
+    die('Erreur: ' . $error->getMessage());
+} */
+
+/* try {
+    $search = $db->prepare("SELECT count(employeeNumber) FROM customers INNER JOIN employees WHERE contactLastName=lastName");
+    $search->execute();
+} catch (Exception $error) {
+    die('Erreur: ' . $error->getMessage());
+} */
+
+/* try {
+    $search = $db->prepare("SELECT MAX(MSRP) AS productCode from products ");
+    $search->execute();
+} catch (Exception $error) {
+    die('Erreur: ' . $error->getMessage());
+} */
+
 try {
-    $search = $db->prepare("SELECT count(*) FROM products WHERE quantityInStock>100 AND quantityInStock<500");
+    $search = $db->prepare("SELECT productCode, MSRP FROM products ORDER BY MSRP DESC LIMIT 1");
     $search->execute();
 } catch (Exception $error) {
     die('Erreur: ' . $error->getMessage());
